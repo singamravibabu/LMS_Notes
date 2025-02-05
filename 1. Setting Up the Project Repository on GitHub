@@ -1,0 +1,54 @@
+## 1: Setting Up the Project Repository on GitHub  
+
+Since this is a collaborative project, the first step is to create a GitHub repository where all students can contribute.  
+
+#### **Instructions:**  
+1. **Create a GitHub Repository:**  
+   - Go to [GitHub](https://github.com/) and log in.  
+   - Click on the **New Repository** button.  
+   - Name the repository **Library-Management-System** (or a suitable name).  
+   - Select **Public** (or Private if you prefer).  
+   - Check the box for **Add a README file** (to provide project details).  
+   - Click **Create Repository**.  
+
+2. **Initialize the Project on Your Local System:**  
+   - Open a terminal or command prompt.  
+   - Clone the repository:  
+     ```bash
+     git clone https://github.com/your-username/Library-Management-System.git
+     ```
+   - Navigate to the project folder:  
+     ```bash
+     cd Library-Management-System
+     ```
+   - Create a `.gitignore` file (to exclude unnecessary files):  
+     ```bash
+     echo "__pycache__/" >> .gitignore
+     ```
+   - Create an empty `main.py` file:  
+     ```bash
+     touch main.py
+     ```
+
+3. **Push Initial Commit:**  
+   - Add all files:  
+     ```bash
+     git add .
+     ```
+   - Commit the changes:  
+     ```bash
+     git commit -m "Initial project setup"
+     ```
+   - Push to GitHub:  
+     ```bash
+     git push origin main
+     ```
+
+4. **Add Students as Collaborators:**  
+   - On GitHub, go to your repository.  
+   - Click on **Settings > Collaborators**.  
+   - Invite your students by their GitHub usernames or emails.  
+
+### **Task for Students:**  
+- Accept the GitHub invitation.  
+- Clone the repository to their local machines.
