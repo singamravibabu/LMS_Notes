@@ -1,0 +1,119 @@
+## 7: Implementing Member Management (CRUD Operations)  
+
+Now that **Book Management** is implemented, Student 2 will handle **Member Management**, which includes adding, updating, deleting, and retrieving members.  
+
+---
+
+### **Instructions for Student 2 (Member Management CRUD)**  
+
+1. **Open the `backend/member.py` file**  
+   - This file will handle all operations related to members.  
+
+2. **Write the CRUD Functions**  
+   - Add the following code to `backend/member.py`:  
+
+   ```python
+   from database.db_connection import get_db_connection
+
+   class Member:
+       def __init__(self, name, email, phone):
+           self.name = name
+           self.email = email
+           self.phone = phone
+
+       @staticmethod
+       def add_member(name, email, phone):
+           """Adds a new member to the database"""
+           conn = get_db_connection()
+           if conn:
+               cursor = conn.cursor()
+               query = "INSERT INTO members (name, email, phone) VALUES (%s, %s, %s)"
+               values = (name, email, phone)
+               cursor.execute(query, values)
+               conn.commit()
+               conn.close()
+               print("Member added successfully!")
+
+       @staticmethod
+       def update_member(member_id, name=None, email=None, phone=None):
+           """Updates member details in the database"""
+           conn = get_db_connection()
+           if conn:
+               cursor = conn.cursor()
+               updates = []
+               values = []
+
+               if name:
+                   updates.append("name = %s")
+                   values.append(name)
+               if email:
+                   updates.append("email = %s")
+                   values.append(email)
+               if phone:
+                   updates.append("phone = %s")
+                   values.append(phone)
+
+               if updates:
+                   query = f"UPDATE members SET {', '.join(updates)} WHERE member_id = %s"
+                   values.append(member_id)
+                   cursor.execute(query, values)
+                   conn.commit()
+
+               conn.close()
+               print("Member updated successfully!")
+
+       @staticmethod
+       def delete_member(member_id):
+           """Deletes a member from the database"""
+           conn = get_db_connection()
+           if conn:
+               cursor = conn.cursor()
+               query = "DELETE FROM members WHERE member_id = %s"
+               cursor.execute(query, (member_id,))
+               conn.commit()
+               conn.close()
+               print("Member deleted successfully!")
+
+       @staticmethod
+       def get_all_members():
+           """Retrieves all members from the database"""
+           conn = get_db_connection()
+           if conn:
+               cursor = conn.cursor()
+               query = "SELECT * FROM members"
+               cursor.execute(query)
+               members = cursor.fetchall()
+               conn.close()
+               return members
+
+   # Test the functionality
+   if __name__ == "__main__":
+       Member.add_member("Alice Johnson", "alice@example.com", "9876543210")
+       members = Member.get_all_members()
+       print(members)
+   ```
+
+3. **Test the Member Management Functions**  
+   - Run the script:  
+     ```bash
+     python backend/member.py
+     ```
+   - Check if the member is added to the database.  
+
+4. **Commit and Push Changes to GitHub**  
+   ```bash
+   git add backend/member.py
+   git commit -m "Implemented Member Management CRUD"
+   git push origin main
+   ```
+
+---
+
+### **Instructions for All Students**  
+- **Pull the latest changes:**  
+  ```bash
+  git pull origin main
+  ```
+- **Run the test script** and confirm that members are being added and retrieved correctly.
+
+Once this is done, let me know, and we will proceed to the next step! 🚀
