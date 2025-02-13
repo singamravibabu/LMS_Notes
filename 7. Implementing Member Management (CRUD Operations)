@@ -115,5 +115,3 @@ Now that **Book Management** is implemented, Student 2 will handle **Member Mana
   git pull origin main
   ```
 - **Run the test script** and confirm that members are being added and retrieved correctly.
-
-Once this is done, let me know, and we will proceed to the next step! 🚀
